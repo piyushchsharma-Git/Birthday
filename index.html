@@ -5,7 +5,6 @@
     <title>Happy Birthday Ditu ❤️</title>
 
 ```
-<!-- Mobile responsive -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
@@ -23,7 +22,7 @@
         font-family: Arial;
     }
 
-    /* Background image layer */
+    /* Background image */
     .bg {
         position: fixed;
         width: 100%;
@@ -63,7 +62,7 @@
     #surprise {
         background: #ff4d6d;
         color: white;
-        transition: transform 0.3s, box-shadow 0.3s;
+        transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
     }
 
     #later {
@@ -100,7 +99,7 @@
         100% { transform: translateY(-10vh); opacity: 0; }
     }
 
-    /* Mobile adjustments */
+    /* Mobile */
     @media (max-width: 768px) {
         h1 { font-size: 28px; }
         #message { font-size: 18px; }
@@ -115,7 +114,7 @@
 <body>
 
 ```
-<!-- Background image -->
+<!-- Background -->
 <img src="ditu.jpg" class="bg">
 
 <h1>🎂 Happy Birthday Ditu ❤️</h1>
@@ -125,7 +124,9 @@
 <button id="later">Later 😜</button>
 
 <img id="gif" src="cake.gif">
-<div id="finalMessage">I may not say it always, but you are the best thing that has ever happened in my life ❤️</div>
+<div id="finalMessage">
+    I may not say it always, but you are the best thing that has ever happened in my life ❤️
+</div>
 
 <audio id="music" src="music.mp3"></audio>
 ```
@@ -151,13 +152,13 @@
 
     laterBtn.addEventListener("mouseover", function() {
 
-        // Move "Later" button
+        // Move "Later"
         const x = Math.random() * (window.innerWidth - 100);
         const y = Math.random() * (window.innerHeight - 50);
         laterBtn.style.left = x + "px";
         laterBtn.style.top = y + "px";
 
-        // Grow "Open Gift" button
+        // Grow "Open Gift"
         scale += 0.2;
         surpriseBtn.style.transform = "scale(" + scale + ")";
         surpriseBtn.style.boxShadow = "0 0 20px #ff4d6d";
@@ -168,6 +169,15 @@
         document.getElementById("gif").style.display = "block";
         document.getElementById("finalMessage").style.display = "block";
         document.getElementById("music").play();
+
+        // Hide buttons
+        document.getElementById("surprise").style.opacity = "0";
+        document.getElementById("later").style.opacity = "0";
+
+        setTimeout(() => {
+            document.getElementById("surprise").style.display = "none";
+            document.getElementById("later").style.display = "none";
+        }, 300);
     }
 
     // Floating hearts
@@ -184,9 +194,6 @@
 
     setInterval(createHeart, 300);
 </script>
-
-</body>
-</html>
 
 </body>
 </html>
